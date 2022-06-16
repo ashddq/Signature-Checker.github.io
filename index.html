@@ -81,9 +81,9 @@
 
                                     <div class="form-group">
                                         <label>Response-Timestamp</label>
-                                        <input type="text" id="request_timestamp" class="form-control"
+                                        <input type="text" id="response_timestamp" class="form-control"
                                             value="2020-10-21T03:38:28Z"></input>
-                                        <small>Request-Timestamp uses ISO 8601 timestamp format. Example:
+                                        <small>Response-Timestamp uses ISO 8601 timestamp format. Example:
                                             <code>2020-10-21T03:38:28Z</code></small>
                                     </div>
 
@@ -164,7 +164,7 @@
                             Content-Type: application/json<br>
                             Client-Id: <span id="final_client_id"></span><br>
                             Request-Id: <span id="final_request_id"></span><br>
-                            Request-Timestamp: <span id="final_request_timestamp"></span><br>
+                            Response-Timestamp: <span id="final_response_timestamp"></span><br>
                             Signature: <span id="final_signature"></span><br>
                         </code>
 
@@ -197,7 +197,7 @@
             var backSlashN = "%5Cn";
             var clientId = document.querySelector('#client_id').value;
             var requestId = document.querySelector('#request_id').value;
-            var requestTimestamp = document.querySelector('#request_timestamp').value;
+            var responseTimestamp = document.querySelector('#response_timestamp').value;
             var requestTarget = document.querySelector('#request_target').value;
             var digest = document.querySelector('#digest_value').value;
             var request_body = document.querySelector('#request_body').value;
@@ -206,26 +206,26 @@
                 document.querySelector('#raw_signature_component').value =
                 "Client-Id:" + clientId + decodeURIComponent(backSlashN) +
                 "Request-Id:" + requestId + decodeURIComponent(backSlashN) +
-                "Request-Timestamp:" + requestTimestamp + decodeURIComponent(backSlashN) +
+                "Response-Timestamp:" + responseTimestamp + decodeURIComponent(backSlashN) +
                 "Request-Target:" + requestTarget
 
                 document.querySelector('#formatted_signature_component').value =
                 "Client-Id:" + clientId + "\n" +
                 "Request-Id:" + requestId + "\n" +
-                "Request-Timestamp:" + requestTimestamp + "\n" +
+                "Response-Timestamp:" + responseTimestamp + "\n" +
                 "Request-Target:" + requestTarget
             } else {
                 document.querySelector('#raw_signature_component').value =
                 "Client-Id:" + clientId + decodeURIComponent(backSlashN) +
                 "Request-Id:" + requestId + decodeURIComponent(backSlashN) +
-                "Request-Timestamp:" + requestTimestamp + decodeURIComponent(backSlashN) +
+                "Response-Timestamp:" + responseTimestamp + decodeURIComponent(backSlashN) +
                 "Request-Target:" + requestTarget + decodeURIComponent(backSlashN) +
                 "Digest:" + digest
 
                 document.querySelector('#formatted_signature_component').value =
                 "Client-Id:" + clientId + "\n" +
                 "Request-Id:" + requestId + "\n" +
-                "Request-Timestamp:" + requestTimestamp + "\n" +
+                "Response-Timestamp:" + responseTimestamp + "\n" +
                 "Request-Target:" + requestTarget + "\n" +
                 "Digest:" + digest
             }
@@ -237,7 +237,7 @@
             var secretKey = document.querySelector('#secret_key').value;
             var clientId = document.querySelector('#client_id').value;
             var requestId = document.querySelector('#request_id').value;
-            var requestTimestamp = document.querySelector('#request_timestamp').value;
+            var responseTimestamp = document.querySelector('#response_timestamp').value;
             var prependHashingMethod = "HMACSHA256=";
 
             var encodedSignature = document.querySelector('#encoded_signature').value = CryptoJS.enc.Base64
@@ -247,7 +247,7 @@
             document.querySelector('#final_signature').innerHTML = prependHashingMethod + encodedSignature;
             document.querySelector('#final_client_id').innerHTML = clientId;
             document.querySelector('#final_request_id').innerHTML = requestId;
-            document.querySelector('#final_request_timestamp').innerHTML = requestTimestamp;
+            document.querySelector('#final_response_timestamp').innerHTML = responseTimestamp;
         }
     </script>
 </body>
